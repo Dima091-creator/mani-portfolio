@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dima091 — Portfolio</title>
+  <style>
+    :root{
+      --bg:#0b0c0f; --card:#0f1114; --muted:#97a0ab; --accent:#7c3aed;
+      font-family: Inter, Roboto, system-ui, -apple-system, "Segoe UI", Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0; background:linear-gradient(180deg,#040405 0%,#0b0c0f 100%); color:#e6eef6; min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:28px;}
+    .wrap{width:100%; max-width:1000px;}
+    header{display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:22px;}
+    h1{margin:0;font-size:22px;}
+    p.lead{margin:4px 0 0;color:var(--muted); font-size:14px;}
+    nav a{color:var(--muted); text-decoration:none; font-size:14px; margin-left:12px}
+    .hero{display:flex; gap:20px; align-items:center; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:18px; border-radius:12px; margin-bottom:18px;}
+    .hero .left{flex:1}
+    .hero .right{width:160px; text-align:center;}
+    .skills{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;}
+    .skill{background:#0b0d10;padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted);}
+    #projectsHeader{display:flex; justify-content:space-between; align-items:center; margin:18px 0;}
+    #search{background:#0a0b0d;border:1px solid #111;padding:8px 10px;border-radius:8px;color:var(--muted); width:220px;}
+    .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px;}
+    .card{background:var(--card); padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,0.03); display:flex; flex-direction:column; gap:8px;}
+    .card h3{margin:0;font-size:16px;}
+    .desc{font-size:13px;color:var(--muted); min-height:36px;}
+    .meta{display:flex; justify-content:space-between; color:var(--muted); font-size:12px;}
+    .btn{background:var(--accent); color:white; padding:8px 12px; border-radius:8px; text-decoration:none; display:inline-block; font-weight:600; border:none; cursor:pointer;}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04); color:var(--muted)}
+    footer{color:var(--muted); text-align:center; margin-top:26px; font-size:13px;}
+    .add-note{font-size:13px;color:var(--muted); margin-top:8px;}
+    /* Responsive */
+    @media (max-width:600px){
+      header{flex-direction:column; align-items:flex-start; gap:6px}
+      .hero{flex-direction:column; align-items:flex-start}
+      .hero .right{width:100%}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Dima091 — Портфолио</h1>
+        <p class="lead">Простой сайт для показа проектов — открой проект одной кнопкой.</p>
+      </div>
+      <nav>
+        <a href="#projects">Проекты</a>
+        <a href="#about">Обо мне</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="top">
+      <div class="left">
+        <strong style="font-size:18px">Привет, я Дима 👋</strong>
+        <p class="lead">Я делаю проекты на GitHub: Python, Web, маленькие игры и скрипты. Ниже — мои проекты; нажми «Открыть», чтобы увидеть их как сайты или репозитории.</p>
+        <div class="skills" aria-hidden="true">
+          <span class="skill">Python</span>
+          <span class="skill">JavaScript</span>
+          <span class="skill">HTML</span>
+          <span class="skill">CSS</span>
+          <span class="skill">Git</span>
+        </div>
+      </div>
+      <div class="right">
+        <div style="background:#0a0b0d;padding:12px;border-radius:10px;">
+          <div style="width:80px;height:80px;background:linear-gradient(135deg,#222,#111);border-radius:8px;margin:0 auto 8px">
+          <img style="width: 80px; height: 80px;" src="./photo_2025-04-19_15-02-41.jpg" alt=""></div>
+          <div style="font-size:13px;color:var(--muted)">Dima091-creator</div>
+        </div>
+        <div style="margin-top:8px"><a class="btn" href="https://github.com/Dima091-creator" target="_blank" rel="noreferrer">Мой GitHub</a></div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div id="projectsHeader">
+        <h2 style="margin:0">Проекты</h2>
+        <div style="display:flex;align-items:center;gap:10px">
+          <input id="search" placeholder="Поиск...">
+          <button id="openAll" class="btn ghost" title="Открыть все проекты в новых вкладках">Открыть всё</button>
+        </div>
+      </div>
+
+      <div class="grid" id="grid"></div>
+
+      <div class="add-note">
+        <strong>Как добавить проект (быстро):</strong>
+        <div>Открой файл <code>index.html</code>, найди блок <code>const projects = [...]</code> внизу и добавь объект с `name`, `description`, `url` и (опционально) `language`.</div>
+      </div>
+    </section>
+
+    <section id="about" style="margin-top:20px; background:#071018; padding:12px; border-radius:10px">
+      <h3>Обо мне</h3>
+      <p style="color:var(--muted)">Я — начинающий разработчик из Узбекистана. Люблю создавать полезные проекты и выкладывать их на GitHub. Для вопросов — открой мой GitHub или напиши в Telegram (ссылка в репо).</p>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Dima091 — Портфолио · Открой проект одной кнопкой
+    </footer>
+  </div>
+
+<script>
+/*
+  Простой список проектов.
+  Чтобы добавить проект: отредактируй этот массив в index.html (в репозитории)
+  Пример объекта:
+  { name: 'MyProject', description: 'Короткое описание', url: 'https://имя.github.io/myproject', language: 'JavaScript' }
+*/
+const projects = [
+  { name: 'example-site', description: 'Демонстрационный сайт (пример)', url: 'https://github.com/Dima091-creator', language: 'HTML' },
+  /* <-- добавляй сюда новые проекты */
+];
+
+// --- логика рендера ---
+const grid = document.getElementById('grid');
+const search = document.getElementById('search');
+const openAll = document.getElementById('openAll');
+
+function render(list){
+  grid.innerHTML = '';
+  if(list.length === 0){
+    grid.innerHTML = '<div style="color:var(--muted)">Проекты не найдены.</div>';
+    return;
+  }
+  list.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div style="display:flex; justify-content:space-between; align-items:start;">
+        <div style="flex:1">
+          <h3>${escapeHtml(p.name)}</h3>
+          <div class="desc">${escapeHtml(p.description || 'Описание отсутствует')}</div>
+        </div>
+      </div>
+      <div class="meta">
+        <div>${p.language || '—'}</div>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <button class="btn open">Открыть</button>
+          <a class="btn ghost" target="_blank" rel="noreferrer" href="${encodeURI(p.url)}">GitHub</a>
+        </div>
+      </div>
+    `;
+    const btn = card.querySelector('.open');
+    btn.addEventListener('click', () => {
+      // открываем в новой вкладке
+      window.open(p.url, '_blank');
+    });
+    grid.appendChild(card);
+  });
+}
+
+function escapeHtml(s = ''){
+  return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
+}
+
+search.addEventListener('input', () => {
+  const q = search.value.trim().toLowerCase();
+  render(projects.filter(p => (p.name + ' ' + (p.description||'')).toLowerCase().includes(q)));
+});
+
+openAll.addEventListener('click', () => {
+  // откроет до 10 вкладок, чтобы не заблокировал браузер
+  const list = projects.slice(0, 10);
+  list.forEach(p => window.open(p.url, '_blank'));
+});
+
+// initial
+document.getElementById('year').textContent = new Date().getFullYear();
+render(projects);
+</script>
+</body>
+</html>
