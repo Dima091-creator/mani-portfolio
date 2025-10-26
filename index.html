@@ -45,7 +45,7 @@
     <header>
       <div>
         <h1>Dima091 — Портфолио</h1>
-        <p class="lead">Простой сайт для показа проектов — открой проект одной кнопкой.</p>
+        <p class="lead"></p>
       </div>
       <nav>
         <a href="#projects">Проекты</a>
@@ -85,11 +85,6 @@
       </div>
 
       <div class="grid" id="grid"></div>
-
-      <div class="add-note">
-        <strong>Как добавить проект (быстро):</strong>
-        <div>Открой файл <code>index.html</code>, найди блок <code>const projects = [...]</code> внизу и добавь объект с `name`, `description`, `url` и (опционально) `language`.</div>
-      </div>
     </section>
 
     <section id="about" style="margin-top:20px; background:#071018; padding:12px; border-radius:10px">
@@ -103,18 +98,17 @@
   </div>
 
 <script>
-/*
-  Простой список проектов.
-  Чтобы добавить проект: отредактируй этот массив в index.html (в репозитории)
-  Пример объекта:
-  { name: 'MyProject', description: 'Короткое описание', url: 'https://имя.github.io/myproject', language: 'JavaScript' }
-*/
+
 const projects = [
-  { name: 'example-site', description: 'Демонстрационный сайт (пример)', url: 'https://github.com/Dima091-creator', language: 'HTML' },
-  /* <-- добавляй сюда новые проекты */
+  { name: 'Ummiy', description: 'Ummiy рестарант меню', url: 'https://dima091-creator.github.io/Restaran-menu/', language: 'HTML CSS' },
+  { name: 'Workit', description: 'Workit it project', url: 'https://dima091-creator.github.io/workit/', language: 'HTML CSS' },
+  { name: 'Figmaland', description: 'Figmaland it project', url:'https://dima091-creator.github.io/Figma-land-Project/', language: 'HTML CSS' },
+  { name: 'Saas', description: 'SAAS Prject', url: 'https://dima091-creator.github.io/saas-project-/', language: 'HTML CSS' },
+  { name: 'Create X', description: 'Create X it Project', url: 'https://dima091-creator.github.io/project-create-x/', language: 'HTML CSS JS' },
+  { name: 'To do List', description: 'Copyright', url: 'https://dima091-creator.github.io/Task-board/', language: 'HTML CSS JS' },
+  
 ];
 
-// --- логика рендера ---
 const grid = document.getElementById('grid');
 const search = document.getElementById('search');
 const openAll = document.getElementById('openAll');
@@ -162,12 +156,9 @@ search.addEventListener('input', () => {
 });
 
 openAll.addEventListener('click', () => {
-  // откроет до 10 вкладок, чтобы не заблокировал браузер
   const list = projects.slice(0, 10);
   list.forEach(p => window.open(p.url, '_blank'));
 });
-
-// initial
 document.getElementById('year').textContent = new Date().getFullYear();
 render(projects);
 </script>
